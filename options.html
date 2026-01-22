@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>fafa-tts 设置</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="page-header">
+        <h1>fafa-tts</h1>
+        <p>选中文本后右键朗读或点击扩展图标播放，配置 Azure 语音合成参数。</p>
+      </header>
+
+      <section class="card">
+        <h2>基础配置</h2>
+        <div class="field">
+          <label for="apiKey">API Key</label>
+          <input
+            id="apiKey"
+            type="password"
+            placeholder="填入 Azure Speech API Key"
+          />
+        </div>
+        <div class="field">
+          <label for="region">位置 / 区域</label>
+          <input id="region" type="text" placeholder="例如 eastus" />
+        </div>
+        <div class="field">
+          <label for="rateRange">语速倍率</label>
+          <div class="rate-row">
+            <input id="rateRange" type="range" min="0.5" max="2" step="0.1" />
+            <div class="rate-display">
+              <span id="rateValue">1.0x</span>
+              <span class="rate-hint">0.5x - 2.0x</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>声音选择</h2>
+        <p class="muted">填写 API Key 与区域后刷新声音列表。</p>
+        <div class="actions">
+          <button id="refreshVoices" type="button" class="secondary">
+            刷新声音列表
+          </button>
+          <span id="voicesStatus" class="status"></span>
+        </div>
+
+        <div class="field">
+          <label for="defaultVoice">默认声音（未识别语言时）</label>
+          <select id="defaultVoice"></select>
+        </div>
+
+        <div class="voice-map">
+          <div class="voice-map-header">
+            <h3>按语言选择</h3>
+          </div>
+          <div id="voiceSplit" class="split-panel">
+            <div id="voiceList" class="split-list"></div>
+            <div id="voiceDetail" class="split-detail"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>连接验证</h2>
+        <p>使用当前配置向 Azure 请求短音频，验证连接是否成功。</p>
+        <div class="actions">
+          <button id="testConnection" type="button">测试连接</button>
+          <span id="testStatus" class="status"></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>缓存</h2>
+        <p>已缓存条目：<span id="cacheCount">0</span></p>
+        <div class="actions">
+          <button id="toggleCache" type="button" class="secondary">
+            查看缓存
+          </button>
+          <button id="clearCache" type="button">清空缓存</button>
+        </div>
+        <div id="cachePanel" class="cache-panel hidden">
+          <div id="cacheList" class="scroll-panel"></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <button id="save" type="button">保存配置</button>
+        <span id="saveStatus" class="status"></span>
+      </footer>
+    </main>
+
+    <script src="options.js"></script>
+  </body>
+</html>

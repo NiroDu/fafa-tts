@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "fafa-tts",
+  "version": "0.1.0",
+  "description": "选中文本后右键朗读（Azure TTS）",
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "offscreen",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": ["https://*.tts.speech.microsoft.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "action": {
+    "default_title": "fafa-tts",
+    "default_icon": {
+      "16": "icons/icon-default.png",
+      "32": "icons/icon-default.png",
+      "48": "icons/icon-default.png",
+      "128": "icons/icon-default.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-default.png",
+    "32": "icons/icon-default.png",
+    "48": "icons/icon-default.png",
+    "128": "icons/icon-default.png"
+  }
+}
